@@ -6,6 +6,14 @@
 ## Copyright (c) Jonathan Serrano, 2023
 ## ---------------------------
 
+#!/usr/local/bin python3
+## ---------------------------
+## Script name: PrintHierarchy.py
+## Purpose: Input file paths and print out file heirarchy tree
+## Author: Jonathan Serrano
+## Copyright (c) Jonathan Serrano, 2023
+## ---------------------------
+
 import sys
 import os
 
@@ -43,17 +51,8 @@ def main(input_paths):
     print(f"Tree output saved to: {output_file_path}")
 
 def test():
-    home_dir = os.path.expanduser("~")
-    home_tree = {"~": {}}
-    for root, dirs, files in os.walk(home_dir):
-        curr_dir = root.replace(home_dir, "~")
-        parent_dir = os.path.dirname(curr_dir)
-        add_to_tree(home_tree.setdefault(parent_dir, {}), [os.path.basename(curr_dir)])
-        for file in files:
-            add_to_tree(home_tree.setdefault(curr_dir, {}), [file])
-    
-    print("Home Folder Hierarchy:")
-    print_tree(home_tree)
+    input_paths = ["dir1/dir2/file1.txt", "dir1/dir3/file2.txt", "dir4/file3.txt"]
+    main(input_paths)
 
 if __name__ == "__main__":
     input_paths = sys.argv[1:]
